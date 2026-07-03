@@ -134,7 +134,14 @@ If you want the dashboard and worker launched together later, use:
 .\scripts\stop_services.ps1
 .\scripts\stop_all_services.ps1
 .\scripts\import-x-archive.ps1 -ArchiveDir "C:\path\to\unzipped\twitter-archive"
+python scripts/import_xquik_export.py --input .\data\xquik-export.jsonl
 ```
+
+`scripts/import_xquik_export.py` accepts reviewed Xquik/TweetClaw CSV, JSON, and
+JSONL exports, stores each row as a local `scraped_posts` record, and queues it
+as a candidate for the same manual reply or quote review flow used by live
+source lists. Rows marked `unreviewed`, `needs_review`, `not_approved`,
+`pending`, or `rejected` are skipped by default.
 
 ## Detailed Setup
 
